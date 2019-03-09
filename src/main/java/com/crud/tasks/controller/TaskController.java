@@ -1,17 +1,19 @@
 package com.crud.tasks.controller;
 
+
 import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.mapper.TaskMapper;
 import com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
@@ -33,9 +35,9 @@ public class TaskController {
     }
 
     @Transactional
-    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteTask/{taskId}")
-    public void deleteTask(@PathVariable Long taskId) {
-            service.deleteTask(taskId);
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
+    public void deleteTask(@RequestParam Long taskId)  {
+        service.deleteTask(taskId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
@@ -48,5 +50,5 @@ public class TaskController {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
 
-
 }
+
