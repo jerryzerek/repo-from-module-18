@@ -18,7 +18,6 @@ public class DbService {
         return repository.findAll();
     }
 
-
     public Task saveTask(final Task task) {
         return repository.save(task);
     }
