@@ -9,23 +9,18 @@ import java.util.stream.Collectors;
 
 @Component
 public class TaskMapper {
-    public Task mapToTask(final TaskDto taskDto) {
-        return new Task (
-                taskDto.getId(),
-                taskDto.getTitle(),
-                taskDto.getContent());
+
+    public Task mapToTask(TaskDto taskDto) {
+        return new Task(taskDto.getId(), taskDto.getName(), taskDto.getContent());
     }
 
-    public TaskDto mapToTaskDto(final Task task) {
-        return new TaskDto(
-                task.getId(),
-                task.getTitle(),
-                task.getContent());
+    public TaskDto mapToTaskDto(Task task) {
+        return new TaskDto(task.getId(), task.getName(), task.getContent());
     }
 
-    public List<TaskDto> mapToTaskDtoList (final List<Task> taskList) {
-        return taskList.stream()
-                .map(t -> new TaskDto(t.getId(), t.getTitle(), t.getContent()))
+    public List<TaskDto> mapToTaskDtoList (List<Task> tasksList) {
+        return tasksList.stream()
+                .map(t -> new TaskDto(t.getId(), t.getName(), t.getContent()))
                 .collect(Collectors.toList());
     }
 }

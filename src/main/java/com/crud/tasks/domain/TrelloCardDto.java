@@ -1,18 +1,17 @@
 package com.crud.tasks.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 
-
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Transactional
-public class TaskDto {
-    private Long id;
+public class TrelloCardDto {
     private String name;
-    private String content;
+    private String description;
+    private String pos;
+    private String listId;
 
 }
